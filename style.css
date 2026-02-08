@@ -1,0 +1,235 @@
+/* ===== RESET BASE ===== */
+
+* {
+	box-sizing: border-box;
+	max-width: 100%;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+
+	background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+
+	padding: 20px;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	font-family: Arial, sans-serif;
+}
+
+/* ===== CARD PRINCIPAL ===== */
+
+.card {
+	position: relative;
+	overflow: hidden;
+	background: white;
+	border-radius: 20px;
+	text-align: center;
+
+	width: 100%;
+	max-width: 520px;
+
+	padding: 25px;
+
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+
+	background: url("corazones.gif") center/cover no-repeat;
+
+	opacity: 0.15;
+
+	pointer-events: none;
+	z-index: 0;
+}
+
+.card > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* ===== TEXTOS ===== */
+
+h1 {
+	color: #ff4d6d;
+	margin-top: 0;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+p {
+	color: #333;
+	font-size: 16px;
+}
+
+.contador {
+	margin-top: 20px;
+	font-size: 14px;
+}
+
+/* ===== GALERIA ===== */
+
+.galeria {
+	display: flex;
+	gap: 15px;
+	margin-top: 20px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.card-foto {
+	width: 150px;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 15px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-foto img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	animation: zoomLoop 8s infinite ease-in-out;
+}
+
+@keyframes zoomLoop {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+/* ===== CARRUSEL ===== */
+
+.carrusel-box {
+	width: 100%;
+	max-width: 320px;
+	overflow: hidden;
+	border-radius: 20px;
+	margin: 20px auto;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.carrusel-track {
+	display: flex;
+	transition: transform 0.6s ease-in-out;
+	align-items: center;
+	will-change: transform;
+}
+
+.carrusel-track img {
+	width: 100%;
+	height: auto;
+	flex-shrink: 0;
+	object-fit: contain;
+}
+
+/* ===== MOBILE GRANDE ===== */
+
+@media (max-width: 600px) {
+	body {
+		padding: 10px;
+		align-items: center;
+	}
+
+	.card {
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		padding: 20px;
+		border-radius: 18px;
+	}
+
+	h1 {
+		font-size: 22px;
+	}
+
+	p {
+		font-size: 15px;
+	}
+}
+
+/* ===== MOBILE CHICO ===== */
+
+@media (max-width: 400px) {
+	.card {
+		padding: 18px;
+	}
+
+	h1 {
+		font-size: 20px;
+	}
+}
+#lottie-bg {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	opacity: 0.2;
+	filter: blur(1px);
+}
+
+#lottie-overlay {
+	position: fixed; /* Cubre toda la pantalla */
+	inset: 0;
+	z-index: 9999; /* MÁS ALTO para que pase sobre todo */
+	pointer-events: none; /* No bloquea scroll ni clicks */
+	opacity: 0.35; /* Ajustable */
+	mix-blend-mode: n normal; /* O 'screen' para glow */
+}
+
+.card > *:not(#lottie-bg) {
+	position: relative;
+	z-index: 2;
+}
+
+.card {
+	position: relative;
+	overflow: hidden;
+	background: linear-gradient(
+		rgba(255, 255, 255, 0.85),
+		rgba(255, 255, 255, 0.85)
+	);
+	backdrop-filter: blur(2px);
+}
+
+@media (max-width: 600px) {
+	.carrusel-box {
+		width: 100%;
+		max-width: 390px;
+	}
+
+	#lottie-overlay {
+		opacity: 0.6;
+	}
+
+	#lottie-bg {
+		opacity: 0.4;
+	}
+}
